@@ -1,8 +1,8 @@
-package top.juusok.couponapi.service;
+package top.juusok.couponapi.dao;
 
 import java.util.Date;
 
-public interface CouponService {
+public interface CouponDao {
 	
 	int create(double money, Integer amount, Date validTime, Date invalidTime);
 
@@ -13,5 +13,4 @@ public interface CouponService {
 	int getByID(Integer couponID);
 	
 	int dealByID(Integer couponID);
-	
 }
