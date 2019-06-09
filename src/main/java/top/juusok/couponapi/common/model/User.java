@@ -5,6 +5,7 @@ public class User {
 	private String phoneNumber;
 	private String password;
 	private String salt;
+	private String id;
 	
 	public User(String phoneNumber, String password)
 	{
@@ -13,6 +14,14 @@ public class User {
 	}
 	
 	public User() {};
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return id;
+	}
 	
 	public void setPhoneNumber(String phoneNumber)
 	{

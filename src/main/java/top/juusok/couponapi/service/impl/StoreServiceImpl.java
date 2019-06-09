@@ -1,8 +1,10 @@
 package top.juusok.couponapi.service.impl;
 
+import top.juusok.couponapi.common.dto.JwtUserDTO;
 import top.juusok.couponapi.common.exception.def.ProjectException;
 import top.juusok.couponapi.common.model.Store;
 import top.juusok.couponapi.common.utils.DigestUtil;
+import top.juusok.couponapi.common.utils.JWTUtils;
 import top.juusok.couponapi.common.validator.StoreValidator;
 import top.juusok.couponapi.dao.StoreDao;
 import top.juusok.couponapi.service.StoreService;
@@ -30,6 +32,7 @@ public class StoreServiceImpl implements StoreService {
 			
 			String encodedPwd = DigestUtil.md5Hash(store.getPassword(), salt);
 			store.setPassword(encodedPwd);
+			store.setId(store.getPhoneNumber());
 			
 			storeDao.create(store);
 		} else {
@@ -46,24 +49,23 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public int login(Store store) {
+	public String login(Store store) {
 		// TODO Auto-generated method stub
-		if(StoreValidator.checkForLogin(store)) {
-			Store retStore = getInfo();
-			String salt = retStore.getSalt();
-			String retPwd = retStore.getPassword();
-			
-			String encodedPwd = DigestUtil.md5Hash(store.getPassword(), salt);
-			if(retPwd == encodedPwd)
-			{
-				
-			} else {
-				
-			}
-		} else {
+		if(!StoreValidator.checkForLogin(store)) {
 			throw new ProjectException("数据不合法");
 		}
-		return 0;
+		Store retStore = getInfo();
+		String salt = retStore.getSalt();
+		String retPwd = retStore.getPassword();
+	
+		String encodedPwd = DigestUtil.md5Hash(store.getPassword(), salt);
+		if(retPwd != encodedPwd) {
+			throw  new ProjectException("用户或密码错误");
+		}
+
+		JwtUserDTO jwtUserDTO = new JwtUserDTO(retStore.getId());
+        String jwt = JWTUtils.createToken(jwtUserDTO, JWT_AGE);
+        return jwt;
 	}
 
 }

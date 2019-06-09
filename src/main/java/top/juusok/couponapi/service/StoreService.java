@@ -6,7 +6,7 @@ public interface StoreService {
 
 	int create(Store store);
 	
-	int login(Store store);
+	String login(Store store);
 	
 	Store getInfo();
 	

@@ -1,8 +1,10 @@
 package top.juusok.couponapi.service.impl;
 
+import top.juusok.couponapi.common.dto.JwtUserDTO;
 import top.juusok.couponapi.common.exception.def.ProjectException;
 import top.juusok.couponapi.common.model.User;
 import top.juusok.couponapi.common.utils.DigestUtil;
+import top.juusok.couponapi.common.utils.JWTUtils;
 import top.juusok.couponapi.common.validator.UserValidator;
 import top.juusok.couponapi.dao.UserDao;
 import top.juusok.couponapi.service.UserService;
@@ -26,6 +28,7 @@ public class UserServiceImpl implements UserService {
 			
 			String encodedPwd = DigestUtil.md5Hash(user.getPassword(), salt);
 			user.setPassword(encodedPwd);
+			user.setId(user.getPassword());
 			
 			userDao.create(user);
 		} else {
@@ -42,9 +45,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int login(User user) {
+	public String login(User user) {
 		// TODO Auto-generated method stub
-		return 0;
+		if(!UserValidator.checkForLogin(user)) {
+			throw new ProjectException("数据不合法");
+		}
+		User retUser = getInfo();
+		String salt = retUser.getSalt();
+		String retPwd = retUser.getPassword();
+	
+		String encodedPwd = DigestUtil.md5Hash(user.getPassword(), salt);
+		if(retPwd != encodedPwd) {
+			throw  new ProjectException("用户或密码错误");
+		}
+
+		JwtUserDTO jwtUserDTO = new JwtUserDTO(retUser.getId());
+        String jwt = JWTUtils.createToken(jwtUserDTO, JWT_AGE);
+        return jwt;
 	}
 
 }

@@ -12,6 +12,5 @@ public interface CouponService {
 	
 	int getByID(Integer couponID);
 	
-	int dealByID(Integer couponID);
-	
+	int dealByID(Integer couponID);	
 }

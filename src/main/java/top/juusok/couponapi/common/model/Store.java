@@ -7,6 +7,7 @@ public class Store {
 	private String phoneNumber;
 	private String password;
 	private String salt;
+	private String id;
  
 	public Store(String name, String address, String phoneNumber, String password)
 	{
@@ -17,6 +18,14 @@ public class Store {
 	}
 	
 	public Store() {};
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return id;
+	}
 	
 	public void setName(String name)
 	{
