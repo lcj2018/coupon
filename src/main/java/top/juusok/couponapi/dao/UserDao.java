@@ -6,6 +6,6 @@ public interface UserDao {
 	
 	int create(User user);
 	
-	int getInfo();
+	User getInfo();
 
 }

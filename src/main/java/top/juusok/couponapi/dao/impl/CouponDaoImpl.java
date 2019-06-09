@@ -1,7 +1,6 @@
 package top.juusok.couponapi.dao.impl;
 
-import java.util.Date;
-
+import top.juusok.couponapi.common.model.Coupon;
 import top.juusok.couponapi.dao.CouponDao;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +8,8 @@ import org.springframework.stereotype.Repository;
 public class CouponDaoImpl implements CouponDao {
 
 	@Override
-	public int create(double money, Integer amount, Date validTime, Date invalidTime) {
-		// TODO Auto-generated method stub
+	public int create(Coupon coupon) {
+		// TODO Auto-generated method stub double money, Integer amount, Date validTime, Date invalidTime
 		return 0;
 	}
 

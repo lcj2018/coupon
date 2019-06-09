@@ -1,10 +1,10 @@
 package top.juusok.couponapi.dao;
 
-import java.util.Date;
+import top.juusok.couponapi.common.model.Coupon;
 
 public interface CouponDao {
 	
-	int create(double money, Integer amount, Date validTime, Date invalidTime);
+	int create(Coupon coupon);
 
 	int put(Integer[] arrCounponID);
 	

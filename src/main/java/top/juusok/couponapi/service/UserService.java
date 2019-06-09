@@ -8,6 +8,6 @@ public interface UserService {
 	
 	int login(User user);
 	
-	int getInfo();
+	User getInfo();
 	
 }

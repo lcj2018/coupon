@@ -8,6 +8,6 @@ public interface StoreService {
 	
 	int login(Store store);
 	
-	int getInfo();
+	Store getInfo();
 	
 }

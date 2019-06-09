@@ -4,6 +4,7 @@ public class User {
 	
 	private String phoneNumber;
 	private String password;
+	private String salt;
 	
 	public User(String phoneNumber, String password)
 	{
@@ -31,5 +32,14 @@ public class User {
 	public String getPassword()
 	{
 		return password;
+	}
+	
+	public String getSalt()
+	{
+		return salt;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }

@@ -14,9 +14,9 @@ public class StoreDaoImpl implements StoreDao {
 	}
 
 	@Override
-	public int getInfo() {
+	public Store getInfo() {
 		// TODO Auto-generated method stub
-		return 0;
+		return new Store();
 	}
 
 }

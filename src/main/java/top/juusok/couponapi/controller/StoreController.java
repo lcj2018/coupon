@@ -25,14 +25,8 @@ public class StoreController {
 	@PutMapping
 	public ResponseEntity<JsonResult<?>> register(Store store)
 	{
-		if(StoreValidator.checkForResgistration(store))
-		{
-			storeService.create(store);
-			return ResponseEntity.ok(new JsonResult<>(null, "注册成功"));
-		}
-		else {
-			return ResponseEntity.badRequest().body(new JsonResult<>(null, "注册成功"));
-		}
+		storeService.create(store);
+		return ResponseEntity.ok(new JsonResult<>(null, "注册成功"));
 	}
 	
 	@PostMapping

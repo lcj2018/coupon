@@ -6,6 +6,7 @@ public class Store {
 	private String address;
 	private String phoneNumber;
 	private String password;
+	private String salt;
  
 	public Store(String name, String address, String phoneNumber, String password)
 	{
@@ -55,5 +56,13 @@ public class Store {
 	public String getPassword()
 	{
 		return password;
+	}
+	
+	public String getSalt() {
+		return salt;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }

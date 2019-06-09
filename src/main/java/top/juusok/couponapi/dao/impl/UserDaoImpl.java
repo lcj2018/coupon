@@ -14,9 +14,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int getInfo() {
+	public User getInfo() {
 		// TODO Auto-generated method stub
-		return 0;
+		return new User();
 	}
 
 }
