@@ -30,14 +30,14 @@ public class CommonController {
 	public ResponseEntity<JsonResult<?>> storeRegister(Store store)
 	{
 		storeService.create(store);
-		return ResponseEntity.ok(new JsonResult<>(null, "注册成功"));
+		return ResponseEntity.ok(new JsonResult<>(null, "注册成功", 200));
 	}
 	
 	@PostMapping("/stores")
 	public ResponseEntity<JsonResult<?>> storeLogin(Store store)
 	{
 		String jwt = storeService.login(store);
-		JsonResult<?> result = new JsonResult<>(null, "登录成功");
+		JsonResult<?> result = new JsonResult<>(null, "登录成功", 200);
 		return ResponseEntity.ok().header("Authorization", jwt).body(result);
 	}	
 	
@@ -45,14 +45,14 @@ public class CommonController {
 	public ResponseEntity<JsonResult<?>> userRegister(User user)
 	{
 		userService.create(user);
-		return ResponseEntity.ok(new JsonResult<>(null, "注册成功"));
+		return ResponseEntity.ok(new JsonResult<>(null, "注册成功", 200));
 	}
 	
 	@PostMapping("/users")
 	public ResponseEntity<JsonResult<?>> userLogin(User user)
 	{
 		String jwt = userService.login(user);
-		JsonResult<?> result = new JsonResult<>(null, "登录成功");
+		JsonResult<?> result = new JsonResult<>(null, "登录成功", 200);
 		return ResponseEntity.ok().header("Authorization", jwt).body(result);
 	}
 	

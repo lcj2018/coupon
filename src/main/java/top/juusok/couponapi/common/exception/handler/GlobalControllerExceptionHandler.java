@@ -17,7 +17,7 @@ public class GlobalControllerExceptionHandler {
     @ResponseBody
     public ResponseEntity<JsonResult<?>> handleRuntimeException(RuntimeException ex){
         logger.error(ex.getMessage());
-        return new ResponseEntity<>(new JsonResult<>(null, "操作失败"), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new JsonResult<>(null, "操作失败", 500), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

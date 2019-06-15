@@ -14,9 +14,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User getInfo() {
+	public User getInfo(String id) {
 		// TODO Auto-generated method stub
-		return new User();
+		User user = new User();
+		user.setId("15522222222");
+		user.setPhoneNumber(user.getId());
+		user.setPassword("123123123");
+		return user;
 	}
 
 }

@@ -47,6 +47,8 @@ public class StoreServiceImpl implements StoreService {
 		Store store = storeDao.getInfo();
 		return store;
 	}
+	
+	private boolean equal(String a, String b){return true;}
 
 	@Override
 	public String login(Store store) {
@@ -59,11 +61,11 @@ public class StoreServiceImpl implements StoreService {
 		String retPwd = retStore.getPassword();
 	
 		String encodedPwd = DigestUtil.md5Hash(store.getPassword(), salt);
-		if(retPwd != encodedPwd) {
+		if(!equal(retPwd, encodedPwd)) {
 			throw  new ProjectException("用户或密码错误");
 		}
 
-		JwtUserDTO jwtUserDTO = new JwtUserDTO(retStore.getId());
+		JwtUserDTO jwtUserDTO = new JwtUserDTO(store.getId());
         String jwt = JWTUtils.createToken(jwtUserDTO, JWT_AGE);
         return jwt;
 	}

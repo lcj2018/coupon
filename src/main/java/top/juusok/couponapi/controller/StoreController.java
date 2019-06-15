@@ -29,12 +29,12 @@ public class StoreController {
 	
 	@ModelAttribute
 	void beforeAction(HttpServletRequest request) {
-		String jwt = request.getHeader("Authorization");
+		String jwt = request.getHeader("Authorization").substring(7);
 		request.setAttribute("JwtUserDTO", JWTUtils.decodeAndGet(jwt, JwtUserDTO.class));
 	}
 	
 	@GetMapping
 	void getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO) {
-		
+
 	}
 }

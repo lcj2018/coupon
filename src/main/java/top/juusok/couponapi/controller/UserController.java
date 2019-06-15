@@ -1,6 +1,7 @@
 package top.juusok.couponapi.controller;
 
 import top.juusok.couponapi.common.utils.JWTUtils;
+import top.juusok.couponapi.common.api.JsonResult;
 import top.juusok.couponapi.common.dto.JwtUserDTO;
 import top.juusok.couponapi.service.UserService;
 
@@ -25,13 +26,13 @@ public class UserController {
 	
 	@ModelAttribute
 	void beforeAction(HttpServletRequest request) {
-		String jwt = request.getHeader("Authorization");
+		String jwt = request.getHeader("Authorization").substring(7);
 		request.setAttribute("JwtUserDTO", JWTUtils.decodeAndGet(jwt, JwtUserDTO.class));
 	}
 	
 	@GetMapping
-	void getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO)
+	public ResponseEntity<JsonResult<?>> getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO)
 	{
-		
+		return ResponseEntity.ok(new JsonResult<>(jwtUserDTO, "获取成功", 200));
 	}
 }

@@ -9,6 +9,6 @@ public interface UserService {
 	
 	String login(User user);
 	
-	User getInfo();
+	User getInfo(String id);
 	
 }

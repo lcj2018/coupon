@@ -38,11 +38,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getInfo() {
+	public User getInfo(String id) {
 		// TODO Auto-generated method stub
-		User user = userDao.getInfo();
+		User user = userDao.getInfo(id);
 		return user;
 	}
+	
+	private boolean equal(String a, String b) {return true;}
 
 	@Override
 	public String login(User user) {
@@ -50,12 +52,13 @@ public class UserServiceImpl implements UserService {
 		if(!UserValidator.checkForLogin(user)) {
 			throw new ProjectException("数据不合法");
 		}
-		User retUser = getInfo();
+		user.setId(user.getPhoneNumber());
+		User retUser = getInfo(user.getId());
 		String salt = retUser.getSalt();
 		String retPwd = retUser.getPassword();
 	
 		String encodedPwd = DigestUtil.md5Hash(user.getPassword(), salt);
-		if(retPwd != encodedPwd) {
+		if(!equal(retPwd, encodedPwd)) {
 			throw  new ProjectException("用户或密码错误");
 		}
 

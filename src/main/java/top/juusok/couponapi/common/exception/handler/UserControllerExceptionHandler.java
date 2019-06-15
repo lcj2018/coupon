@@ -16,7 +16,7 @@ public class UserControllerExceptionHandler {
 	@ResponseBody
 	public ResponseEntity<JsonResult<?>> handleProjectException(ProjectException ex)
 	{
-		return new ResponseEntity<>(new JsonResult<>(null, ex.getMessage()), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(new JsonResult<>(null, ex.getMessage(), 400), HttpStatus.BAD_REQUEST);
 	}
 	
 }
