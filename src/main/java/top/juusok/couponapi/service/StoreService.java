@@ -8,6 +8,6 @@ public interface StoreService {
 	
 	String login(Store store);
 	
-	Store getInfo();
+	Store getInfo(String id);
 	
 }

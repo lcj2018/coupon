@@ -42,13 +42,13 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public Store getInfo() {
+	public Store getInfo(String id) {
 		// TODO Auto-generated method stub
-		Store store = storeDao.getInfo();
+		Store store = storeDao.getInfo(id);
 		return store;
 	}
 	
-	private boolean equal(String a, String b){return true;}
+	private boolean equal(String a, String b){return a.contentEquals(b);}
 
 	@Override
 	public String login(Store store) {
@@ -56,7 +56,7 @@ public class StoreServiceImpl implements StoreService {
 		if(!StoreValidator.checkForLogin(store)) {
 			throw new ProjectException("数据不合法");
 		}
-		Store retStore = getInfo();
+		Store retStore = getInfo(store.getPhoneNumber());
 		String salt = retStore.getSalt();
 		String retPwd = retStore.getPassword();
 	
@@ -65,7 +65,7 @@ public class StoreServiceImpl implements StoreService {
 			throw  new ProjectException("用户或密码错误");
 		}
 
-		JwtUserDTO jwtUserDTO = new JwtUserDTO(store.getId());
+		JwtUserDTO jwtUserDTO = new JwtUserDTO(retStore.getId());
         String jwt = JWTUtils.createToken(jwtUserDTO, JWT_AGE);
         return jwt;
 	}

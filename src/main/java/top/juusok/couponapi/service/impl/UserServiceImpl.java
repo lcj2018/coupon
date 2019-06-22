@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 			
 			String encodedPwd = DigestUtil.md5Hash(user.getPassword(), salt);
 			user.setPassword(encodedPwd);
-			user.setId(user.getPassword());
+			user.setId(user.getPhoneNumber());
 			
 			userDao.create(user);
 		} else {
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 	
-	private boolean equal(String a, String b) {return true;}
+	private boolean equal(String a, String b) {return a.contentEquals(b);}
 
 	@Override
 	public String login(User user) {

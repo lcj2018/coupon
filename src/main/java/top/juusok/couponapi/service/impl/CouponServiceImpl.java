@@ -21,10 +21,10 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public int create(Coupon coupon) {
+	public int create(String id, Coupon coupon) {
 		// TODO Auto-generated method stub double money, Integer amount, Date validTime, Date invalidTime
 		if(CouponValidator.checkForCreate(coupon)) {
-			couponDao.create(coupon);
+			couponDao.create(id, coupon);
 		} else {
 			throw new ProjectException("数据不合法");
 		}
@@ -39,7 +39,8 @@ public class CouponServiceImpl implements CouponService {
 
 	@Override
 	public int getAll() {
-		// TODO Auto-generated method stub
+		
+		couponDao.getAll();
 		return 0;
 	}
 

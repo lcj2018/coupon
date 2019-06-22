@@ -32,27 +32,29 @@ public class CouponController {
 	}
 
 	@PostMapping
-	public void create() {
-		
+	public ResponseEntity<JsonResult<?>> create(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO, Coupon coupon) {
+		couponService.create(jwtUserDTO.getId(), coupon);
+		return ResponseEntity.ok(new JsonResult<>(null, "创建成功", 200));
 	}
 
 	@PutMapping
-	public void put() {
-		
+	public ResponseEntity<JsonResult<?>> put(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO, Coupon coupon) {
+		return ResponseEntity.ok(new JsonResult<>(null, "上架成功", 200));
 	}
 	
 	@GetMapping
-	public void getAll() {
-		
+	public ResponseEntity<JsonResult<?>> getAll(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO) {
+		couponService.getAll();
+		return ResponseEntity.ok(new JsonResult<>(null, "创建成功", 200));
 	}
 	
 	@GetMapping("/{coupon_id}")
-	public void getByID(@PathVariable int cid) {
-		
+	public ResponseEntity<JsonResult<?>> getByID(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO, @PathVariable int cid) {
+		return ResponseEntity.ok(new JsonResult<>(null, "创建成功", 200));
 	}
 	
 	@PutMapping("/{coupon_id}")
-	public void dealByID(@PathVariable int cid) {
-		
+	public ResponseEntity<JsonResult<?>> dealByID(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO, @PathVariable int cid) {
+		return ResponseEntity.ok(new JsonResult<>(null, "创建成功", 200));
 	}
 }

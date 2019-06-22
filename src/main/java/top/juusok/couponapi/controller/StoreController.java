@@ -34,7 +34,8 @@ public class StoreController {
 	}
 	
 	@GetMapping
-	void getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO) {
-
+	ResponseEntity<JsonResult<?>> getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO) {
+		Store store = storeService.getInfo(jwtUserDTO.getId());
+		return ResponseEntity.ok(new JsonResult<>(store, "获取成功", 200));
 	}
 }

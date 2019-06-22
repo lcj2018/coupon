@@ -4,7 +4,7 @@ import top.juusok.couponapi.common.model.Coupon;
 
 public interface CouponService {
 	
-	int create(Coupon coupon);
+	int create(String id, Coupon coupon);
 
 	int put(Integer[] arrCounponID);
 	

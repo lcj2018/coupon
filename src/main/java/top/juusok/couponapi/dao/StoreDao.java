@@ -6,6 +6,6 @@ public interface StoreDao {
 	
 	int create(Store store);
 	
-	Store getInfo();
+	Store getInfo(String id);
 
 }

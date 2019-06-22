@@ -6,15 +6,17 @@ public class Coupon {
 	
 	private double money;
 	private Integer amount;
-	private Date validTime;
-	private Date invalidTime;
+	private String validTime;
+	private String invalidTime;
+	private String description;
 	
-	public Coupon(double money, Integer amount, Date validTime, Date invalidTime)
+	public Coupon(double money, Integer amount, String validTime, String invalidTime, String description)
 	{
 		setMoney(money);
 		setAmount(amount);
 		setValidTime(validTime);
 		setInvalidTime(invalidTime);
+		setDescription(description);
 	}
 	
 	public Coupon() {};
@@ -29,14 +31,19 @@ public class Coupon {
 		this.amount = amount;
 	}
 	
-	public void setValidTime(Date validTime)
+	public void setValidTime(String validTime)
 	{
 		this.validTime = validTime;
 	}
 	
-	public void setInvalidTime(Date invalidTime)
+	public void setInvalidTime(String invalidTime)
 	{
 		this.invalidTime = invalidTime;
+	}
+	
+	public void setDescription(String description)
+	{
+		this.description = description;
 	}
 	
 	public double getMoney()
@@ -49,13 +56,18 @@ public class Coupon {
 		return amount;
 	}
 	
-	public Date getValidTime()
+	public String getValidTime()
 	{
 		return validTime;
 	}
 	
-	public Date getInvalidTime()
+	public String getInvalidTime()
 	{
 		return invalidTime;
+	}
+	
+	public String getDescription()
+	{
+		return description;
 	}
 }

@@ -3,6 +3,7 @@ package top.juusok.couponapi.controller;
 import top.juusok.couponapi.common.utils.JWTUtils;
 import top.juusok.couponapi.common.api.JsonResult;
 import top.juusok.couponapi.common.dto.JwtUserDTO;
+import top.juusok.couponapi.common.model.User;
 import top.juusok.couponapi.service.UserService;
 
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,7 @@ public class UserController {
 	@GetMapping
 	public ResponseEntity<JsonResult<?>> getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO)
 	{
-		return ResponseEntity.ok(new JsonResult<>(jwtUserDTO, "获取成功", 200));
+		User user = userService.getInfo(jwtUserDTO.getId());
+		return ResponseEntity.ok(new JsonResult<>(user, "获取成功", 200));
 	}
 }
