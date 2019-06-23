@@ -26,6 +26,9 @@ public class CommonController {
 		this.userService = userService;
 	}
 
+	/*
+	 * 商家注册
+	 */
 	@PutMapping("/stores")
 	public ResponseEntity<JsonResult<?>> storeRegister(Store store)
 	{
@@ -33,6 +36,9 @@ public class CommonController {
 		return ResponseEntity.ok(new JsonResult<>(null, "注册成功", 200));
 	}
 	
+	/*
+	 * 商家登录	
+	 */
 	@PostMapping("/stores")
 	public ResponseEntity<JsonResult<?>> storeLogin(Store store)
 	{
@@ -41,6 +47,9 @@ public class CommonController {
 		return ResponseEntity.ok().header("Authorization", jwt).body(result);
 	}	
 	
+	/*
+	 * 用户注册
+	 */
 	@PutMapping("/users")
 	public ResponseEntity<JsonResult<?>> userRegister(User user)
 	{
@@ -48,6 +57,9 @@ public class CommonController {
 		return ResponseEntity.ok(new JsonResult<>(null, "注册成功", 200));
 	}
 	
+	/*
+	 * 用户登录
+	 */
 	@PostMapping("/users")
 	public ResponseEntity<JsonResult<?>> userLogin(User user)
 	{

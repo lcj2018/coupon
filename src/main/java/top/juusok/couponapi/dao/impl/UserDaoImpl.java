@@ -1,10 +1,10 @@
 package top.juusok.couponapi.dao.impl;
 
 import top.juusok.couponapi.common.constant.Const;
-import top.juusok.couponapi.common.fabricentity.request.CreateStoreReq;
-import top.juusok.couponapi.common.fabricentity.request.CreateUserReq;
 import top.juusok.couponapi.common.model.Store;
 import top.juusok.couponapi.common.model.User;
+import top.juusok.couponapi.common.query.fabricentity.request.CreateStoreReq;
+import top.juusok.couponapi.common.query.fabricentity.request.CreateUserReq;
 import top.juusok.couponapi.dao.UserDao;
 import top.juusok.couponapi.service.HttpClient;
 

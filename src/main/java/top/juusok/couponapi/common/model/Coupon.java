@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Coupon {
 	
+	private String couponID;
 	private double money;
 	private Integer amount;
 	private String validTime;
@@ -21,6 +22,11 @@ public class Coupon {
 	
 	public Coupon() {};
 	
+	public void setCouponID(String couponID)
+	{
+		this.couponID = couponID;
+	}
+	
 	public void setMoney(double money)
 	{
 		this.money = money;
@@ -33,17 +39,30 @@ public class Coupon {
 	
 	public void setValidTime(String validTime)
 	{
+		if(validTime.length() > 19) {
+			validTime = validTime.replace("T", " ");
+			validTime = validTime.substring(0,19);
+		}
 		this.validTime = validTime;
 	}
 	
 	public void setInvalidTime(String invalidTime)
 	{
+		if(invalidTime.length() > 19) {
+			invalidTime = invalidTime.replace("T", " ");
+			invalidTime = invalidTime.substring(0,19);
+		}
 		this.invalidTime = invalidTime;
 	}
 	
 	public void setDescription(String description)
 	{
 		this.description = description;
+	}
+	
+	public String getCouponID()
+	{
+		return couponID;
 	}
 	
 	public double getMoney()

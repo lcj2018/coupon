@@ -2,9 +2,14 @@ package top.juusok.couponapi.service.impl;
 
 import top.juusok.couponapi.common.exception.def.ProjectException;
 import top.juusok.couponapi.common.model.Coupon;
+import top.juusok.couponapi.common.query.web.request.AdoptCouponReq;
+import top.juusok.couponapi.common.query.web.request.DealCouponReq;
 import top.juusok.couponapi.common.validator.CouponValidator;
 import top.juusok.couponapi.dao.CouponDao;
+import top.juusok.couponapi.common.query.web.request.PutCouponReq;
 import top.juusok.couponapi.service.CouponService;
+
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,27 +37,40 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public int put(Integer[] arrCounponID) {
+	public int put(PutCouponReq couponReq) {
 		// TODO Auto-generated method stub
+		couponDao.put(couponReq);
 		return 0;
 	}
 
 	@Override
-	public int getAll() {
+	public ArrayList getAll() {
 		
-		couponDao.getAll();
+		return couponDao.getAll();
+		
+	}
+	
+	@Override
+	public ArrayList getAll4Sale() {
+		
+		return couponDao.getAll4Sale();
+	}
+
+	@Override
+	public Coupon getByID(String couponID) {
+		// TODO Auto-generated method stub
+		return couponDao.getByID(couponID);
+	}
+	
+	@Override
+	public int adoptByID(AdoptCouponReq couponReq) {
+		couponDao.adoptByID(couponReq);
 		return 0;
 	}
 
 	@Override
-	public int getByID(Integer couponID) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int dealByID(Integer couponID) {
-		// TODO Auto-generated method stub
+	public int dealByID(DealCouponReq couponReq) {
+		couponDao.dealByID(couponReq);
 		return 0;
 	}
 

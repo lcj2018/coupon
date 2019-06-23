@@ -33,6 +33,9 @@ public class StoreController {
 		request.setAttribute("JwtUserDTO", JWTUtils.decodeAndGet(jwt, JwtUserDTO.class));
 	}
 	
+	/*
+	 * 获取当前商家信息
+	 */
 	@GetMapping
 	ResponseEntity<JsonResult<?>> getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO) {
 		Store store = storeService.getInfo(jwtUserDTO.getId());

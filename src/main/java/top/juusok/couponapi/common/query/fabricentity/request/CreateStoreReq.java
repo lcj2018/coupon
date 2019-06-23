@@ -1,4 +1,4 @@
-package top.juusok.couponapi.common.fabricentity.request;
+package top.juusok.couponapi.common.query.fabricentity.request;
 
 import java.util.ArrayList;
 

@@ -31,6 +31,9 @@ public class UserController {
 		request.setAttribute("JwtUserDTO", JWTUtils.decodeAndGet(jwt, JwtUserDTO.class));
 	}
 	
+	/*
+	 * 获取当前用户信息
+	 */
 	@GetMapping
 	public ResponseEntity<JsonResult<?>> getInfo(@RequestAttribute("JwtUserDTO") JwtUserDTO jwtUserDTO)
 	{
