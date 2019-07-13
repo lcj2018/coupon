@@ -1,4 +1,4 @@
-package top.juusok.couponapi.common.fabricentity.response;
+package top.juusok.couponapi.common.query.fabricentity.response;
 
 public class CouponItemResp {
 

@@ -1,11 +1,11 @@
 package top.juusok.couponapi.dao.impl;
 
 import top.juusok.couponapi.common.constant.Const;
-import top.juusok.couponapi.common.fabricentity.response.CouponItemResp;
-import top.juusok.couponapi.common.fabricentity.response.GetAllCouponResp;
 import top.juusok.couponapi.common.model.Coupon;
 import top.juusok.couponapi.common.query.fabricentity.request.CreateCouponReq;
 import top.juusok.couponapi.common.query.fabricentity.request.CreateStoreReq;
+import top.juusok.couponapi.common.query.fabricentity.response.CouponItemResp;
+import top.juusok.couponapi.common.query.fabricentity.response.GetAllCouponResp;
 import top.juusok.couponapi.common.query.web.request.AdoptCouponReq;
 import top.juusok.couponapi.common.query.web.request.DealCouponReq;
 import top.juusok.couponapi.dao.CouponDao;
